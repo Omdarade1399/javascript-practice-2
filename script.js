@@ -1,21 +1,12 @@
-// IIFE- Immediately Invoked Function Expression//
+const URL = "https://cat-fact.herokuapp.com/facts"
+const factPara = document.querySelector("#fact");
+const btn = document.querySelector("#btn");
 
-function getData(dataId){
-    return new Promise((resolve, reject) => {
-     setTimeout(() =>{
-         console.log("data", dataId);
-           resolve("Success");
-        }, 2000);
-    });
+const getFacts = async() => {
+    let response = await fetch(URL);
+    console.log(response);
+    let data = await response.json();
+    factPara.innerText = data[2].text;
 }
 
-(async () => {
-    await getData(1);
-    await getData(2);
-    await getData(3);
-    await getData(4);
-    await getData(5);
-}) ();
-
-
-
+btn.addEventListener("click", getFacts);
