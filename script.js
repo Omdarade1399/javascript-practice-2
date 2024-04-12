@@ -1,20 +1,20 @@
-// callback hell//
+// promise//
 
-function getData(dataId, genNextData){
+function getData(dataId){
+    return new Promise((resolve, reject) => {
      setTimeout(() =>{
          console.log("data", dataId);
-            if(genNextData){
-                genNextData();
-            }
+           resolve("Success");
         }, 2000);
+    });
 }
 
-getData(1, () => {
-    getData(2, () => {
-        getData(3, () => {
-            getData(4, () => {
-                getData(5);
+getData(1).then((res) => {
+    getData(2).then((res) => {
+        getData(3).then((res) => {
+            getData(4).then((res) => {
+                console.log(res);
             });
         });
     });
-}); 
+});
