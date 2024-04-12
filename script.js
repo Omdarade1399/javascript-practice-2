@@ -1,4 +1,4 @@
-// async-await//
+// IIFE- Immediately Invoked Function Expression//
 
 function getData(dataId){
     return new Promise((resolve, reject) => {
@@ -9,13 +9,13 @@ function getData(dataId){
     });
 }
 
-async function getAllData() {
+(async () => {
     await getData(1);
     await getData(2);
     await getData(3);
     await getData(4);
     await getData(5);
-}
+}) ();
 
-console.log(getAllData());
+
 
