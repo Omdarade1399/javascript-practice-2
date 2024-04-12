@@ -1,4 +1,4 @@
-// promise//
+// async-await//
 
 function getData(dataId){
     return new Promise((resolve, reject) => {
@@ -9,12 +9,13 @@ function getData(dataId){
     });
 }
 
-getData(1).then((res) => {
-    getData(2).then((res) => {
-        getData(3).then((res) => {
-            getData(4).then((res) => {
-                console.log(res);
-            });
-        });
-    });
-});
+async function getAllData() {
+    await getData(1);
+    await getData(2);
+    await getData(3);
+    await getData(4);
+    await getData(5);
+}
+
+console.log(getAllData());
+
