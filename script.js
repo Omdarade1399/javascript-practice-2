@@ -1,25 +1,34 @@
-let tableBody = document.querySelector('tbody');
+let URL = "https://fakestoreapi.com/products";
+let container = document.querySelector('.container');
+let showMoreButton = document.getElementById('show-more');
+let fullData = [];
 
-let Students = [
-    ['Om' , 9637272740 , 'Male' , 25],
-    ['Pooja' , 8788005680 , 'Female' , 20],
-    ['Sanjay' , 9890167863 , 'Male' , 50],
-    ['Shubhangi' , 9923328506 , 'Female' , 48]
-];
-
-
-
-for(let i=1; i<Students.length; i++){}
-
-Students.forEach((student, i) => {
-    let row = document.createElement('tr');
-    let srCell = document.createElement('td');
-    srCell.textContent = i + 1;
-    row.appendChild(srCell);
-    student.forEach(data => {
-        let col = document.createElement('td');
-        col.textContent = data;
-        row.appendChild(col);
-    }); 
-    tableBody.appendChild(row);
+fetch(URL)
+.then((res) => {
+    return res.json();
+})
+.then((data) => {
+    fullData = data; 
+    displayProducts(3); 
+    if (data.length > 3) {
+        showMoreButton.style.display = 'block'; 
+    }
 });
+
+
+function displayProducts(count) {
+    container.innerHTML = ''; 
+    let limitedData = fullData.slice(0, count);
+    for (let subData of limitedData) {
+        let pro_box = document.createElement('div');
+        pro_box.setAttribute('class', 'product_sect')
+        pro_box.innerHTML = `<img src="${subData.image}" class="pro_img"> <br> Product ID: ${subData.id} <br> Product Title: ${subData.title} <br> Product description: ${subData.description} <br> Product Category: ${subData.category}`;
+        container.append(pro_box);
+    }
+}
+
+showMoreButton.addEventListener('click', function() {
+    displayProducts(fullData.length); 
+    showMoreButton.style.display = 'none'; 
+});
+
