@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color: aqua;
 }
 
@@ -23,4 +23,46 @@ body{
     border: 1px solid black;
     background: transparent;
 
+} */
+
+.btn{
+    border: none;
+    height: 80px;
+    width: 80px;
+    margin: auto;
+    border-radius: 20%;
+    background-color: black;
+    color: white;
+    transition: all 1s linear;
+    font-size: larger;
+}
+
+.button{
+    border: none;
+    height: 80px;
+    width: 80px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    transition: all 1s ease-in;
+    font-size: larger;
+}
+
+.light{
+    color: black;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s linear;
+}
+
+.black{
+    color: white;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s linear;
 }
